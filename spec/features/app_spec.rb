@@ -23,4 +23,12 @@ feature "Messages" do
 
     expect(page).to have_content("Message must be less than 140 characters.")
   end
+
+  scenario "As a user, I can click on the edit button" do
+    visit "/"
+
+    click_button "Edit"
+
+    expect(page).to have_content("Edit")
+  end
 end
