@@ -27,6 +27,11 @@ feature "Messages" do
   scenario "As a user, I can click on the edit button" do
     visit "/"
 
+    fill_in "Message", :with => "Hello Everyone!"
+
+    click_button "Submit"
+
+
     click_button "Edit"
 
     expect(page).to have_content("Edit")
