@@ -42,4 +42,22 @@ feature "Messages" do
 
     expect(page).to have_content("Hello how are you?")
   end
+
+  scenario "User cannot update with more thean 140 carachters" do
+    visit "/"
+
+    fill_in "Message", :with => "Hello Everyone!"
+
+    click_button "Submit"
+
+    click_button "Edit"
+
+    fill_in "Message", :with => "a" * 141
+
+    click_button "Edit Message"
+
+    expect(page).to have_content("Message must be less than 140 characters.")
+
+
+  end
 end

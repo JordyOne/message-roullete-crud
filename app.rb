@@ -36,8 +36,13 @@ class App < Sinatra::Application
   end
 
   patch "/edit/:id" do
-    @database_connection.sql("UPDATE messages SET message='#{params["message"]}' WHERE id= #{params[:id]}")
-    redirect "/"
+    message = params["message"]
+    if message.length <= 140
+      @database_connection.sql("UPDATE messages SET message='#{message}' WHERE id= #{params[:id]}")
+      redirect "/"
+    else
+      flash[:error] = "Message must be less than 140 characters."
+      redirect "/edit/#{params[:id]}"
+    end
   end
-
 end
