@@ -1,10 +1,11 @@
 <h1>Edit Message</h1>
 
 
-<form method="post" action="/edit">
+<form method="post" action="/edit/<%=message["id"]%>">
   <label for="message">Message:</label>
-  <textarea type="text" col="40" row="5" id="message" name="message"><%= message %></textarea><br>
-  <button>Update</button>
+  <textarea type="text" col="40" row="5" id="message" name="message"><%= message["message"] %></textarea><br>
+  <input type="hidden" name="_method" value="patch"/>
+  <button>Edit Message</button>
 </form>
 
 

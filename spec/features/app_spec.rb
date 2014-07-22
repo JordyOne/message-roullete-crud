@@ -35,5 +35,11 @@ feature "Messages" do
     click_button "Edit"
 
     expect(page).to have_content("Edit")
+
+    fill_in "Message", :with => "Hello how are you?"
+
+    click_on "Edit Message"
+
+    expect(page).to have_content("Hello how are you?")
   end
 end
