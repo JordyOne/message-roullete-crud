@@ -6,7 +6,7 @@
 
 <% messages.each do |message| %>
 <div style="margin:auto;">
-    <li><%= message["message"] %>
+    <li><a href="/message/<%= message["id"] %>"><%= message["message"] %></a>
       <a href="/delete/<%= message["id"] %>" style="display:inline-block;
              width: 115px;
              height: 25px;

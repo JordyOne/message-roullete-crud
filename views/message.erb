@@ -1,0 +1,12 @@
+<h2>Message:</h2>
+
+<h3><%= original_message["message"] %></h3>
+
+<h2>Comments:</h2>
+<ul>
+  <% comments.each do |comment| %>
+ <li>
+   <%= comment["comment"]%>
+ </li>
+  <%end%>
+</ul>

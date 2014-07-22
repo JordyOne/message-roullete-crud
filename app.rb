@@ -20,7 +20,7 @@ class App < Sinatra::Application
   end
 
   post "/messages" do
-    message = params[:message]
+    message = params[:message].gsub("'", "''")
     if message.length <= 140
       @database_connection.sql("INSERT INTO messages (message) VALUES ('#{message}')")
     else
@@ -62,5 +62,12 @@ class App < Sinatra::Application
     redirect "/"
   end
 
+  get "/message/:id" do
+    id = params[:id]
+    message = @database_connection.sql("Select message from messages where id = #{id}").first
+    comments = @database_connection.sql("Select * from comments where message_id = '#{id}'")
+    erb :message, locals: {original_message: message,
+                            comments: comments}
+  end
 
 end
