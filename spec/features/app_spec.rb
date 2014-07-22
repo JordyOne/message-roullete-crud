@@ -9,7 +9,7 @@ feature "Messages" do
 
     fill_in "Message", :with => "Hello Everyone!"
 
-    click_button "Submit"
+    click_on "Submit"
 
     expect(page).to have_content("Hello Everyone!")
   end
@@ -29,10 +29,10 @@ feature "Messages" do
 
     fill_in "Message", :with => "Hello Everyone!"
 
-    click_button "Submit"
+    click_on "Submit"
 
 
-    click_button "Edit"
+    click_on "Edit"
 
     expect(page).to have_content("Edit")
 
@@ -50,7 +50,7 @@ feature "Messages" do
 
     click_button "Submit"
 
-    click_button "Edit"
+    click_on "Edit"
 
     fill_in "Message", :with => "a" * 141
 
@@ -58,6 +58,21 @@ feature "Messages" do
 
     expect(page).to have_content("Message must be less than 140 characters.")
 
+
+  end
+
+  scenario "User can delete messages" do
+    visit "/"
+
+    fill_in "Message", :with => "Hello Everyone!"
+
+    click_on "Submit"
+
+    expect(page).to have_content("Delete")
+
+    click_on "Delete"
+
+    expect(page).to_not have_content("Hello Everyone!")
 
   end
 end

@@ -5,13 +5,29 @@
 </form>
 
 <% messages.each do |message| %>
+<div style="margin:auto;">
+    <li><%= message["message"] %>
+      <a href="/delete/<%= message["id"] %>" style="display:inline-block;
+             width: 115px;
+             height: 25px;
+             background: #4E9CAF;
+             padding: 10px;
+             text-align: center;
+             border-radius: 5px;
+             color: white;
+             font-weight: bold;">Delete</a>
+      <a href="/edit/<%= message["id"] %>" style="display: inline-block;
+              width: 115px;
+              height: 25px;
+              background: #4E9CAF;
+              padding: 10px;
+              text-align: center;
+              border-radius: 5px;
+              color: white;
+              font-weight: bold;">Edit</a>
+    </li>
+</div>
 
-
-  <li><%= message["message"] %>
-    <form method="get" action="/edit/<%= message["id"] %>">
-    <button type="submit">Edit</button>
-    </form>
-  </li>
 
     <!--change form button to an anchor <a> with href=/messages/1/edit"-->
     <!--get messages/:id/edit; do (so that the params[:id] == 1-->
