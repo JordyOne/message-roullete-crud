@@ -1,0 +1,7 @@
+<h1>Leave a comment on the following message: <%=message["message"]%></h1>
+
+<form method="post" action="/comment/<%=message["id"]%>">
+  <label for="comment">Comment:</label>
+  <textarea type="text" col="40" row="5" id="comment" name="comment"></textarea><br>
+  <button>Leave Comment</button>
+</form>
