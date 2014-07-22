@@ -5,42 +5,60 @@
 </form>
 
 <% messages.each do |message| %>
-<div style="margin:auto;">
-    <li><a href="/message/<%= message["id"] %>"><%= message["message"] %></a>
-      <a href="/delete/<%= message["id"] %>" style="display:inline-block;
-             width: 115px;
-             height: 25px;
-             background: #4E9CAF;
-             padding: 10px;
-             text-align: center;
-             border-radius: 5px;
-             color: white;
-             font-weight: bold;">Delete</a>
-      <a href="/edit/<%= message["id"] %>" style="display: inline-block;
-              width: 115px;
-              height: 25px;
-              background: #4E9CAF;
-              padding: 10px;
-              text-align: center;
-              border-radius: 5px;
-              color: white;
-              font-weight: bold;">Edit</a>
-      <a href="/comment/<%= message["id"] %>" style="display: inline-block;
-              width: 115px;
-              height: 25px;
-              background: #4E9CAF;
-              padding: 10px;
-              text-align: center;
-              border-radius: 5px;
-              color: white;
-              font-weight: bold;">Comment</a>
-    </li>
-  <li>
-    <% comments.each do |comment| %>
-    <%= comment["comment"] if comment["message_id"] == message["id"] %><br>
-  </li>
-        <%end%>
-</div>
+    <div style="margin:auto;">
+      <li><a href="/message/<%= message["id"] %>"><%= message["message"] %></a>
+        <a href="/delete/<%= message["id"] %>" style="display:inline-block;
+                width: 115px;
+                height: 25px;
+                background: #4E9CAF;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;">Delete</a>
+        <a href="/edit/<%= message["id"] %>" style="display: inline-block;
+                width: 115px;
+                height: 25px;
+                background: #4E9CAF;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;">Edit</a>
+        <a href="/comment/<%= message["id"] %>" style="display: inline-block;
+                width: 115px;
+                height: 25px;
+                background: #4E9CAF;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;">Comment</a>
+        <a href="/like/<%= message["id"] %>" style="display: inline-block;
+                width: 115px;
+                height: 25px;
+                background: #4E9CAF;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;">Like</a>
+      </li>
+
+      <% likes.each do |likes| %>
+          <% if (likes[:message_id]).to_i == message["id"] %>
+              <li>
+                Number of Likes: <%= likes["like_num"] %>
+              </li>
+          <% end %>
+      <% end %>
+      <li>
+        <% comments.each do |comment| %>
+            <%= comment["comment"] if comment["message_id"] == message["id"] %>
+            <br>
+            </li>
+        <% end %>
+        </div>
 
 
     <!--change form button to an anchor <a> with href=/messages/1/edit"-->
@@ -49,6 +67,7 @@
     <!--create messages folder under views and drop edit into it. refactor code to match-->
     <!---->
 <% end %>
+
 
 
 
