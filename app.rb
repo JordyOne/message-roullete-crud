@@ -34,8 +34,4 @@ class App < Sinatra::Application
   erb :edit, locals: {:message => message,
                       :id      => id}
   end
-
-
-
-
 end

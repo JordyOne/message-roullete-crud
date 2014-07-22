@@ -6,12 +6,18 @@
 
 <% messages.each do |message| %>
 
+
   <li><%= message["message"] %>
     <form method="get" action="/edit/<%= message["id"] %>">
     <button type="submit">Edit</button>
     </form>
   </li>
 
+    <!--change form button to an anchor <a> with href=/messages/1/edit"-->
+    <!--get messages/:id/edit; do (so that the params[:id] == 1-->
+    <!--still use interpolation to create the href tag-->
+    <!--create messages folder under views and drop edit into it. refactor code to match-->
+    <!---->
 <% end %>
 
 
