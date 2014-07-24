@@ -46,17 +46,18 @@
       </li>
 
       <% likes.each do |likes| %>
-          <% if (likes[:message_id]).to_i == message["id"] %>
+          <% if likes["message_id"] == message["id"] %>
               <li>
                 Number of Likes: <%= likes["like_num"] %>
               </li>
           <% end %>
       <% end %>
-      <li>
+      <p><b>Comments:</b></p>
+
+
         <% comments.each do |comment| %>
-            <%= comment["comment"] if comment["message_id"] == message["id"] %>
-            <br>
-            </li>
+           <p> <%= comment["comment"] if comment["message_id"] == message["id"] %></p>
+
         <% end %>
         </div>
 
