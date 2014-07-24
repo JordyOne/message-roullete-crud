@@ -74,20 +74,29 @@ class App < Sinatra::Application
 
   get "/like/:id" do
     likes = @database_connection.sql("SELECT * from likes where message_id = '#{params[:id]}'").first
-    # p likes
-    # p "@" * 80
+
     if likes == nil || likes == 0
       @database_connection.sql("INSERT INTO likes (like_num, message_id) VALUES (1, '#{params[:id]}')")
     else
       liked = (likes["like_num"]).to_i
       liked += 1
-      # p liked
-      # p "@" * 80
-      # liked += 1
-      # p "=" *80
+
       p @database_connection.sql("UPDATE likes SET like_num=#{liked} where message_id= '#{params[:id]}'")
     end
     redirect "/"
   end
 
+  get "/unlike/:id" do
+    likes = @database_connection.sql("SELECT * from likes where message_id = '#{params[:id]}'").first
+
+    if likes == nil || likes == 0
+      @database_connection.sql("INSERT INTO likes (like_num, message_id) VALUES (1, '#{params[:id]}')")
+    else
+      liked = (likes["like_num"]).to_i
+      liked -= 1
+
+      p @database_connection.sql("UPDATE likes SET like_num=#{liked} where message_id= '#{params[:id]}'")
+    end
+    redirect "/"
+  end
 end
