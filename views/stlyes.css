@@ -1,0 +1,76 @@
+
+/*
+	STYLE.CSS:
+	One stylesheet to rule them all.
+
+	selector { property:value }
+
+*/
+
+
+
+/* ----- =structure ----- */
+
+
+body {
+    background-color:#000;
+
+}
+
+header {
+    background-color: #c5c5c5;  /* Dark Grey */
+}
+
+header img {
+    width: 300px;
+    height: 100px;
+}
+
+nav {
+    background-color: #f4f4f4;  /* Light Grey */
+}
+
+#content {
+    background-color: #fff;  /* White */
+}
+
+footer {
+    background-color: #c5c5c5;  /* Dark Grey */
+}
+
+.wrapper {
+    margin: auto;
+    width: 980px;
+}
+
+
+/* ----- =columns ----- */
+
+.one_half { 	 width:460px; }
+.one_third {	 width:300px; }
+.two_third {	 width:620px; }
+.one_fourth {	 width:220px; }
+.three_fourth {  width:700px; }
+.full_column {	 width:940px; }
+
+article {
+    position:relative;
+    margin-left:20px;
+    margin-bottom:16px;
+    float:left;
+    border: red 1px solid;
+
+}
+
+
+
+/* clearfix */
+.clearfix:before,
+.clearfix:after { content: " "; display: table; }
+
+.clearfix:after { clear: both; }
+
+/* * For IE 6/7 only * Include this rule to trigger hasLayout and contain floats. */
+.clearfix { *zoom: 1; }
+
+
